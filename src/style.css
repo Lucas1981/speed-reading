@@ -17,7 +17,8 @@ body {
   font-family: "Verdana";
   line-height: 100vh;
   height: 100vh;
-  text-align: center;
+  text-align: left;
+  padding-left: 10vw;
   margin-bottom: 0;
 }
 
@@ -28,5 +29,9 @@ body {
   padding-bottom: 20px;
   padding-top: 10px;
   background: #e0e0e0;
+  width: 100%;
+}
+
+.sr-range-input {
   width: 100%;
 }

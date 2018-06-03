@@ -17,12 +17,33 @@
 
       <div class="sr-controls">
         <div class="container">
+
+          <!-- <select v-model="selectedGutenbergFile" @change="selectFile()">
+            <option v-for="record in gutenberg" :value="record.value">{{record.key}}</option>
+          </select> -->
+
+          <p>
+            <input
+              class="sr-range-input"
+              type="range"
+              v-model="slideIndexProxy"
+              :disabled=" sourceText == '' "
+              min="0"
+              :max="sourceText.length - 1"
+              @change="correctIndex()"
+              @focus="stop()"
+            />
+          </p>
+
           <input type="file" @change="handleFile($event)">
-          Speed: <input type="number" v-model="speed" /> ms
+          Speed: <input type="number" v-model="wpm" /> wpm
           <!-- Words: <input type="number" v-model="wordsPerIteration" /> -->
           Time left: {{ timeLeft }}
           <button class="btn btn-primary" @click="startStop()">{{ startOrStopMsg }}</button>
           <button class="btn btn-danger" @click="reset()">Reset</button>
+          <!-- <div class="checkbox">
+            <label><input type="checkbox" v-model="isDynamic" /> Dynamic timing</label>
+          </div> -->
         </div>
       </div>
     </div>

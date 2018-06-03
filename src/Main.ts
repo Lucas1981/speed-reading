@@ -26,9 +26,9 @@ export default {
     },
     timeLeft(): string {
       // Number of remaining words, divided by
-      let wordsLeft: number = this.sourceText.length - this.index
+      let iterationsLeft: number = (this.sourceText.length - this.index) / (+this.wordsPerIteration)
       let speed: number = this.speed / 1000;
-      let base: number = wordsLeft * speed / 60;
+      let base: number = iterationsLeft * speed / 60;
       let hours: number = Math.floor(base / 60);
       let minutes: number = Math.floor(base % 60);
       let minutesAsString: string = minutes.toString();
@@ -63,11 +63,11 @@ export default {
     },
     updateText(): void {
       let batch: string = '';
-      for(let i = 0; i < this.wordsPerIteration; i++) {
+      for(let i = 0; (i < (+this.wordsPerIteration) && i + this.index < this.sourceText.length); i++) {
           batch += this.sourceText[i + this.index] + ' ';
       }
       this.displayedText = batch;
-      this.index += this.wordsPerIteration;
+      this.index += (+this.wordsPerIteration);
       this.slideIndexProxy = this.index;
     },
     startStop(): void {
@@ -95,8 +95,6 @@ export default {
         return speed;
       }
       else {
-        console.log('length of word = ' + factor);
-        console.log('calculated factor = ' + (min + (step * (factor - 1))));
         return speed * (min + (step * (factor - 1) ) );
       }
     },

@@ -37,10 +37,10 @@
 
           <input type="file" @change="handleFile($event)">
           Speed: <input type="number" v-model="wpm" /> wpm
-          <!-- Words: <input type="number" v-model="wordsPerIteration" /> -->
+          Words: <input type="number" v-model="wordsPerIteration" />
           Time left: {{ timeLeft }}
-          <button class="btn btn-primary" @click="startStop()">{{ startOrStopMsg }}</button>
-          <button class="btn btn-danger" @click="reset()">Reset</button>
+          <button class="btn btn-primary" @click="startStop()" :disabled=" sourceText == '' ">{{ startOrStopMsg }}</button>
+          <button class="btn btn-danger" @click="reset()" :disabled=" sourceText == '' ">Reset</button>
           <!-- <div class="checkbox">
             <label><input type="checkbox" v-model="isDynamic" /> Dynamic timing</label>
           </div> -->

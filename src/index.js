@@ -1,11 +1,11 @@
-import Main from './Main';
+import main from './main';
 import Vue from 'vue';
 import './style.css';
 
-(function(Vue, Main) {
+(function(Vue, main) {
 
   'use strict';
 
-  let bootstrap = new Vue(Main);
+  let bootstrap = new Vue(main);
 
-})(Vue, Main);
+})(Vue, main);
